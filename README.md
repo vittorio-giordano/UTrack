@@ -105,5 +105,4 @@ If you use this model or code in your research, please cite our validation study
 
 **Software repository archive:**
 > Giordano [Surname] (2026). *UTrack (v1.0.0): Model code and evaluation routines for Lagrangian atmospheric moisture tracking*. Zenodo. https://doi.org/10.5281/zenodo.XXXXXXX
-```
 
