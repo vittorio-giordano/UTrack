@@ -1,0 +1,28 @@
+# ===================================================================
+# UTrack Model Configuration File
+# ===================================================================
+
+domain:
+  global_mask: true
+  singlepoint: false
+  single_point_coords: [45.5, 7.5]  # [Latitude, Longitude]
+  mask_file: "./ERA5_land_sea_mask.nc"
+
+tracking:
+  forward_tracking: true
+  reconstruct_mode: true
+  tracking_duration_days: 30
+
+physics:
+  start_from_surface: true
+  use_surface_pressure: true
+  use_mixing: true
+  mixing_timescale: 3600.0          # Frequency in seconds (e.g., 3600 = 1 hour)
+
+numerics:
+  parcels_per_mm: 500000
+  dt_hours: 0.1
+  max_parcels: 45000000             # Maximum pool capacity for parcel pre-allocation
+
+system:
+  output_dir: "./output"
