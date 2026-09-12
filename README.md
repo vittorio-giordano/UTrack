@@ -5,21 +5,25 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-brightgreen.svg)](https://www.python.org/)
 [![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
 
-UTrack is a Lagrangian moisture tracking model designed to diagnose atmospheric moisture sources (evaporationsheds) and precipitation sinks (precipitationsheds) using global atmospheric reanalysis datasets.
+UTrack is a Lagrangian moisture tracking model designed to diagnose surface evaporative moisture sources (precipitationshed) and precipitation sinks (evaporationshed) using global atmospheric reanalysis datasets.
 
 The original UTrack model was developed by Obbe Tuinenburg and Arie Staal:
 * **Reference Paper:** Tuinenburg, O. A. and Staal, A.: *Tracking the global flows of atmospheric moisture and associated uncertainties*, Hydrol. Earth Syst. Sci., 24, 2419–2435, https://doi.org/10.5194/hess-24-2419-2020, 2020.
 * **Original Repository:** [https://github.com/ObbeTuinenburg/UTrack-atmospheric-moisture](https://github.com/ObbeTuinenburg/UTrack-atmospheric-moisture)
 
-This implementation refactors the computational architecture and array operations using Numba JIT multi-threading and cloud-native chunk streaming, maintaining physical consistency while drastically cutting memory consumption and runtime.
+The current version was developed to perform the validation and sensitivity anlysis presented in:
+
+> Giordano [Surname], et al. (2026). *[Title of your GMD Paper]*. Geoscientific Model Development (under review).
+
+This implementation refactors the computational architecture and array operations using Numba JIT multi-threading and cloud-native chunked data streaming, maintaining physical consistency while reducing memory consumption and runtime.
 
 ---
 
 ## Key Features
 
-* **High-Throughput Parallelization:** Core parcel advection, linear interpolation, and moisture allocation routines are JIT-compiled with Numba (`@njit(parallel=True)`), executing at speeds comparable to compiled C.
-* **Low-Memory Cloud Streaming:** Directly streams ERA5 reanalysis fields from Google Cloud ARCO ERA5 Zarr archives in rolling 24-hour chunks, maintaining peak RAM usage under 40 GB without requiring local multi-terabyte downloads.
-* **Budget Tracking & Spin-Up:** Decoupled trajectory advection and volume accumulation allows seamless spin-up runs and exact-month mass budget closures against Eulerian fields.
+* **Parallelization:** Core parcel advection, linear interpolation, and moisture allocation routines are JIT-compiled with Numba (`@njit(parallel=True)`), executing at speeds comparable to compiled C.
+* **Cloud Data Streaming:** Directly streams ERA5 reanalysis fields from Google Cloud ARCO ERA5 Zarr archives without requiring local downloads.
+* **Diagnostic & Initialization:** The validation framework proposed by Giordano et al. (2016) is implemented in the scripts.
 
 ---
 
@@ -87,6 +91,9 @@ python src/UTrack_SPINUP_tracking_indic_diagn_interp.py \
     --month 05
 ```
 
+#### RAM Optimization (Chunk Sizing):
+The cloud streaming engine defaults to downloading 24-hour data chunks, requiring ~40 GB of RAM. For local workstations with limited memory, you can lower this to 6-hour chunks (requiring ~10 GB RAM). To do so, modify the *Meteo class* in *src/UTrack_SPINUP_functions_indic_diagn_interp.py*, specifically the funcions *_load_daily_buffer()* and *load_data()*
+
 ### 2. HPC Execution (SLURM Batch Job)
 For cluster environments, submit the sanitized batch script (passing the config and python script names as arguments):
 
@@ -100,7 +107,7 @@ sbatch slurm/SLURM.sh config_bwdmix24.yml src/UTrack_SPINUP_tracking_indic_diagn
 
 If you use this model or code in your research, please cite our validation study:
 
-**This Study / Model Evaluation:**
+**UTrack Evaluation:**
 > Giordano [Surname], et al. (2026). *[Title of your GMD Paper]*. Geoscientific Model Development (under review).
 
 **Software repository archive:**
