@@ -92,7 +92,7 @@ python src/UTrack_SPINUP_tracking_indic_diagn_interp.py \
 ```
 
 #### RAM Optimization (Chunk Sizing):
-The cloud streaming engine defaults to downloading 24-hour data chunks, requiring ~40 GB of RAM. For local workstations with limited memory, you can lower this to 6-hour chunks (requiring ~10 GB RAM). To do so, modify the *Meteo class* in *src/UTrack_SPINUP_functions_indic_diagn_interp.py*, specifically the funcions *_load_daily_buffer()* and *load_data()*
+The cloud streaming engine defaults to downloading 24-hour data chunks, requiring ~40 GB of RAM. For local workstations with limited memory, you can lower this to 6-hour chunks (requiring ~10 GB RAM). To do so, modify the *Meteo class* in *src/UTrack_SPINUP_functions_indic_diagn_interp.py*, specifically the functions *_load_daily_buffer()* and *load_data()*
 
 ### 2. HPC Execution (SLURM Batch Job)
 For cluster environments, submit the sanitized batch script (passing the config and python script names as arguments):
