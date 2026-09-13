@@ -10,7 +10,7 @@ domain:
 
 tracking:
   forward_tracking: true
-  reconstruct_mode: true
+  spin_up_mode: true
   tracking_duration_days: 30
 
 physics:

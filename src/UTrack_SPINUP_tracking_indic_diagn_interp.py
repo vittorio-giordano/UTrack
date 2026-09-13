@@ -73,7 +73,7 @@ def main():
 
     # Tracking parameters
     forward_tracking = config["tracking"]["forward_tracking"]
-    reconstruct = config["tracking"]["reconstruct_mode"]
+    spin_up = config["tracking"]["spin_up_mode"]
     tracking_duration_days = config["tracking"]["tracking_duration_days"]
 
     # Physics parameters
@@ -117,7 +117,7 @@ def main():
     target_start = datetime(YEAR, MONTH, 1, 0, 0)
     target_end = datetime(YEAR, MONTH, last_day, 23, 0)
 
-    if reconstruct:
+    if spin_up:
         print(f"Spin-up enabled: Validation targeting {target_start.strftime('%Y-%m')}")
         spinup_days = tracking_duration_days
 
@@ -303,7 +303,7 @@ def main():
         active_mask = parcels[:, 11] > 0
         num_active = np.count_nonzero(active_mask)
 
-        if reconstruct:
+        if spin_up:
             do_accumulate = target_start <= curr_date <= target_end
         else:
             do_accumulate = True
@@ -498,8 +498,8 @@ def main():
         if curr_date.minute == 0:
             status = (
                 "REC"
-                if (reconstruct and do_accumulate)
-                else ("SPIN" if reconstruct else "STD")
+                if (spin_up and do_accumulate)
+                else ("SPIN" if spin_up else "STD")
             )
 
             current_active = np.count_nonzero(parcels[:, 11])
@@ -535,7 +535,7 @@ def main():
     print("Simulation completed.")
 
     # Account for residual airborne moisture at simulation end
-    if reconstruct and num_active > 0:
+    if spin_up and num_active > 0:
         valid_parcels_mask = parcels[:, 11] == 1.0
         residual_moisture = np.sum(parcels[valid_parcels_mask, 3])
         total_released -= residual_moisture
