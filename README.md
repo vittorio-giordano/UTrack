@@ -7,6 +7,19 @@
 
 UTrack is a Lagrangian moisture tracking model designed to diagnose surface evaporative moisture sources (precipitationshed) and precipitation sinks (evaporationshed) using global atmospheric reanalysis datasets.
 
+## cit
+
+If you use this model or code in your research, please cite our validation study and the associated repository:
+
+**UTrack Evaluation:**
+> Giordano V., et al. (2026). *Novel validation and performance assessment framework for
+atmospheric moisture tracking approaches: the case of UTrack*. Geoscientific Model Development (under review).
+
+**Software repository archive:**
+> Giordano V. (2026). *UTrack Lagrangian atmospheric moisture tracking model - code and validation routines for "Novel validation and performance assessment framework for atmospheric moisture tracking approaches: the case of UTrack"*. Zenodo. https://doi.org/10.5281/zenodo.22706884
+
+**Github link: https://github.com/vittorio-giordano/UTrack** 
+
 The original UTrack model was developed by Obbe Tuinenburg and Arie Staal:
 * **Reference Paper:** Tuinenburg, O. A. and Staal, A.: *Tracking the global flows of atmospheric moisture and associated uncertainties*, Hydrol. Earth Syst. Sci., 24, 2419–2435, https://doi.org/10.5194/hess-24-2419-2020, 2020.
 * **Original Repository:** [https://github.com/ObbeTuinenburg/UTrack-atmospheric-moisture](https://github.com/ObbeTuinenburg/UTrack-atmospheric-moisture)
@@ -103,13 +116,5 @@ sbatch slurm/SLURM.sh config_bwdmix24.yml src/UTrack_SPINUP_tracking_indic_diagn
 
 ---
 
-## Citation
 
-If you use this model or code in your research, please cite our validation study:
-
-**UTrack Evaluation:**
-> Giordano [Surname], et al. (2026). *[Title of your GMD Paper]*. Geoscientific Model Development (under review).
-
-**Software repository archive:**
-> Giordano [Surname] (2026). *UTrack (v1.0.0): Model code and evaluation routines for Lagrangian atmospheric moisture tracking*. Zenodo. https://doi.org/10.5281/zenodo.XXXXXXX
 

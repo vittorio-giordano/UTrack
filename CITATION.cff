@@ -8,4 +8,4 @@ authors:
     given-names: "Giordano"
     orcid: "https://orcid.org/0009-0005-5613-8177"
 repository-code: "https://github.com/vittorio-giordano/UTrack"
-license: MIT
+license: GPL-3.0-only
