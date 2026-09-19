@@ -1,0 +1,10 @@
+numpy>=1.23.0
+pandas>=1.5.0
+xarray>=2023.01.0
+matplotlib>=3.7.0
+cartopy>=0.21.0
+xskillscore>=0.0.24
+cmocean>=3.0.0
+cmcrameri>=1.7.0
+jupyterlab>=4.0.0
+ipykernel
