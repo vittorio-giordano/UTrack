@@ -617,43 +617,43 @@ def main():
     ds_out.lon.attrs["units"] = "degrees_east"
 
     ds_out.raw_identified.attrs["long_name"] = (
-        "Diagnosed moisture volume (mm*m2 from source)"
+        "Diagnosed moisture volume"
     )
-    ds_out.raw_identified.attrs["units"] = "mm * m2"
+    ds_out.raw_identified.attrs["units"] = "mm m2"
 
     ds_out.reference_output_ERA5.attrs["long_name"] = (
-        "Total Reference output (ERA5 P if fwd, ET if bwd) accumulated during target period"
+        "Total Reference output (ERA5 P if fwd, ET if bwd) diagnosed during identification period"
     )
-    ds_out.reference_output_ERA5.attrs["units"] = "mm * m2"
+    ds_out.reference_output_ERA5.attrs["units"] = "mm m2"
 
     ds_out.reference_input_ERA5.attrs["long_name"] = (
-        "Total Reference input (ERA5 ET if fwd, P if bwd) accumulated during target period"
+        "Total Reference input (ERA5 ET if fwd, P if bwd) diagnosed during identification period"
     )
-    ds_out.reference_input_ERA5.attrs["units"] = "mm * m2"
+    ds_out.reference_input_ERA5.attrs["units"] = "mm m2"
 
     ds_out.tot_lagrangian_tcw.attrs["long_name"] = (
-        "Cumulative Lagrangian column Moisture Volume content"
+        "Hourly average Lagrangian Total Column Water"
     )
-    ds_out.tot_lagrangian_tcw.attrs["units"] = "mm * m2"
+    ds_out.tot_lagrangian_tcw.attrs["units"] = "mm m2"
 
     ds_out.tot_era5_tcw.attrs["long_name"] = (
-        "Cumulative ERA5 Total Column Water Content"
+        "Hourly average ERA5 Total Column Water"
     )
-    ds_out.tot_era5_tcw.attrs["units"] = "mm * m2"
+    ds_out.tot_era5_tcw.attrs["units"] = "mm m2"
 
     ds_out.snap_lag_tcw.attrs["long_name"] = "Lagrangian TCW Snapshot"
-    ds_out.snap_lag_tcw.attrs["units"] = "mm * m2"
+    ds_out.snap_lag_tcw.attrs["units"] = "mm m2"
 
     ds_out.snap_era5_tcw.attrs["long_name"] = "ERA5 TCW Snapshot"
-    ds_out.snap_era5_tcw.attrs["units"] = "mm * m2"
+    ds_out.snap_era5_tcw.attrs["units"] = "mm m2"
 
     ds_out.snap_era5_flux.attrs["long_name"] = (
         "Instantaneous ERA5 reference volume (P if fwd, E if bwd)"
     )
-    ds_out.snap_era5_flux.attrs["units"] = "mm * m2"
+    ds_out.snap_era5_flux.attrs["units"] = "mm m2"
 
     ds_out.snap_lag_flux.attrs["long_name"] = "Instantaneous Model diagnosed volume"
-    ds_out.snap_lag_flux.attrs["units"] = "mm * m2"
+    ds_out.snap_lag_flux.attrs["units"] = "mm m2"
 
     ds_out.attrs["Simulation_Year"] = YEAR
     ds_out.attrs["Simulation_Month"] = MONTH
@@ -670,9 +670,9 @@ def main():
         )
 
     ds_out.attrs["Mode"] = "Single Point" if singlepoint else "Global Mask"
-    ds_out.attrs["Total_Net_Released_m3"] = total_released
-    ds_out.attrs["Total_Deposited_m3"] = sum_raw
-    ds_out.attrs["Scaling_Factor"] = scaling_factor
+    ds_out.attrs["Total_Net_Released_mmm2"] = total_released
+    ds_out.attrs["Total_Diagnosed_mmm2"] = sum_raw
+    ds_out.attrs["Identification_Factor"] = scaling_factor
 
     if singlepoint:
         ds_out.attrs["Point_Coords"] = f"{single_point_coords}"

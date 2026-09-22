@@ -1,6 +1,6 @@
 # UTrack: Lagrangian Atmospheric Moisture Tracking Model
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.22706884)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22706884.svg)](https://doi.org/10.5281/zenodo.22706884)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-brightgreen.svg)](https://www.python.org/)
 [![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
