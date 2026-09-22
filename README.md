@@ -7,13 +7,12 @@
 
 UTrack is a Lagrangian moisture tracking model designed to diagnose surface evaporative moisture sources (precipitationshed) and precipitation sinks (evaporationshed) using global atmospheric reanalysis datasets.
 
-## cit
+## citation
 
 If you use this model or code in your research, please cite our validation study and the associated repository:
 
 **UTrack Evaluation:**
-> Giordano V., et al. (2026). *Novel validation and performance assessment framework for
-atmospheric moisture tracking approaches: the case of UTrack*. Geoscientific Model Development (under review).
+> Giordano V., et al. (2026). *Novel validation and performance assessment framework for atmospheric moisture tracking approaches: the case of UTrack*. Geoscientific Model Development (under review).
 
 **Software repository archive:**
 > Giordano V. (2026). *UTrack Lagrangian atmospheric moisture tracking model - code and validation routines for "Novel validation and performance assessment framework for atmospheric moisture tracking approaches: the case of UTrack"*. Zenodo. https://doi.org/10.5281/zenodo.22706884

@@ -577,6 +577,17 @@ def main():
     else:
         print("Warning: Identification factor set to 1.0 (Zero release or deposition)")
 
+    # Average TCW over the accumulation period
+    total_accumulation_hours = int((target_end - target_start).total_seconds() / 3600.0) + 1
+    
+    if total_accumulation_hours > 0:
+        mean_lagrangian_tcw = tot_lagrangian_tcw / total_accumulation_hours
+        mean_era5_tcw = tot_era5_tcw / total_accumulation_hours
+        print(f"Averaged TCW over {total_accumulation_hours} accumulation hours.")
+    else:
+        mean_lagrangian_tcw = tot_lagrangian_tcw
+        mean_era5_tcw = tot_era5_tcw
+
     dir_str = "fwd" if forward_tracking else "bwd"
 
     if singlepoint:
@@ -599,8 +610,8 @@ def main():
             "raw_identified": (("lat", "lon"), output_raw),
             "reference_output_ERA5": (("lat", "lon"), output_reference),
             "reference_input_ERA5": (("lat", "lon"), input_reference),
-            "tot_lagrangian_tcw": (("lat", "lon"), tot_lagrangian_tcw),
-            "tot_era5_tcw": (("lat", "lon"), tot_era5_tcw),
+            "mean_lagrangian_tcw": (("lat", "lon"), mean_lagrangian_tcw),
+            "mean_era5_tcw": (("lat", "lon"), mean_era5_tcw),
             "snap_lag_tcw": (("snapshot", "lat", "lon"), snap_lag_tcw),
             "snap_era5_tcw": (("snapshot", "lat", "lon"), snap_era5_tcw),
             "snap_era5_flux": (("snapshot", "lat", "lon"), snap_era5_flux),
@@ -631,15 +642,15 @@ def main():
     )
     ds_out.reference_input_ERA5.attrs["units"] = "mm m2"
 
-    ds_out.tot_lagrangian_tcw.attrs["long_name"] = (
+    ds_out.mean_lagrangian_tcw.attrs["long_name"] = (
         "Hourly average Lagrangian Total Column Water"
     )
-    ds_out.tot_lagrangian_tcw.attrs["units"] = "mm m2"
+    ds_out.mean_lagrangian_tcw.attrs["units"] = "mm m2"
 
-    ds_out.tot_era5_tcw.attrs["long_name"] = (
+    ds_out.mean_era5_tcw.attrs["long_name"] = (
         "Hourly average ERA5 Total Column Water"
     )
-    ds_out.tot_era5_tcw.attrs["units"] = "mm m2"
+    ds_out.mean_era5_tcw.attrs["units"] = "mm m2"
 
     ds_out.snap_lag_tcw.attrs["long_name"] = "Lagrangian TCW Snapshot"
     ds_out.snap_lag_tcw.attrs["units"] = "mm m2"
@@ -670,8 +681,8 @@ def main():
         )
 
     ds_out.attrs["Mode"] = "Single Point" if singlepoint else "Global Mask"
-    ds_out.attrs["Total_Net_Released_mmm2"] = total_released
-    ds_out.attrs["Total_Diagnosed_mmm2"] = sum_raw
+    ds_out.attrs["Total_Net_Released_mm_m2"] = total_released
+    ds_out.attrs["Total_Diagnosed_mm_m2"] = sum_raw
     ds_out.attrs["Identification_Factor"] = scaling_factor
 
     if singlepoint:
