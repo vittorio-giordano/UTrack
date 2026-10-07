@@ -1,5 +1,5 @@
 # UTrack: Lagrangian Atmospheric Moisture Tracking Model
-
+[![GitHub release](https://img.shields.io/github/v/release/vittorio-giordano/UTrack.svg)](https://github.com/vittorio-giordano/UTrack/releases)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22706884.svg)](https://doi.org/10.5281/zenodo.22706884)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-brightgreen.svg)](https://www.python.org/)
