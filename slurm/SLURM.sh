@@ -37,7 +37,7 @@ YEAR=2024
 MONTH=05
 
 CONFIG_NAME=${1:-"config_bwdmix24.yml"}
-CONFIG_FILE="config/$CONFIG_NAME"
+CONFIG_FILE="configs/$CONFIG_NAME"
 PYTHON_SCRIPT=${2:-"src/UTrack_SPINUP_tracking_indic_diagn_interp.py"}
 
 echo "----------------------------------------------------------------"
